@@ -1,0 +1,56 @@
+<section id="home" class="page-header">
+    <div class="greeting">
+        <h1>Your Personalized Flickr Gallery</h1>
+        <h3>Search Flickr's public photos by tag. Create a photo gallery of 100 photos!
+        </h3>
+    </div>
+    <div class="search">
+        <form class="form-inline" role="form" ng-submit="search(pageNumber, tag)">
+            <div class="form-group">
+                <label class="sr-only" for="tag-search">tag</label>
+                <input class="form-control" id="tag-search" placeholder="search" ng-model="tag">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default">Search</button>
+            </div>
+        </form>
+    </div>
+</section>
+<section id="gallery">
+    <div class="search-tags" ng-show=tag>
+        <h3>Search results for {{tag | uppercase}}</h3>
+    </div>
+    <div class="page-nav" ng-show="searchPhotos">
+        <a href="/" ng-click="backPage(page, tag)"><span class="glyphicon glyphicon-chevron-left"></span></a>
+        <ul class="pagination">
+            <li ng-repeat="page in pages">
+                <a href="/" ng-click="changePage(page, tag)">{{page}}
+                 </a>
+            </li>
+        </ul>
+        <a href="/" ng-click="nextPage(page, tag)"><span class="glyphicon glyphicon-chevron-right"></span></a>
+    </div>
+    <div class=page-count ng-show="searchPhotos">
+        <p>Page {{page}} of {{totalPages}}</p>
+    </div>
+    <div class="photo-gallery">
+        <div ng-repeat="photo in photos">
+            <a ng-href="/" ng-click="showModal({photo})">
+                <img class="col-xs-2 col-xs-15" ng-src="http://farm{{photo.farm}}.static.flickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_s.jpg">
+            </a>
+        </div>
+    </div>
+    <div class="photo-modal modal" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" ng-show="openedPhoto">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" ng-click="closeModal()">&times;</button>
+                    <h4>{{currentPhoto.title}}</h4>
+                </div>
+                <div class="modal-body">
+                    <img src="{{selectedPhotoSrc}}">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

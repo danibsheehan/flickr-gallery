@@ -1,0 +1,47 @@
+#gallery {
+  width: 90%;
+  margin: 0 auto;
+  h3 {
+    text-align: center;
+  }
+  .page-nav {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    ul {
+      margin-right: 1%;
+      margin-left: 1%;
+    }
+    span {
+      margin-top: 200%;
+    }
+    a, li {
+      color: #B71C1C;
+    }
+  }
+  .page-count {
+    text-align: center;
+  }
+  .photo-gallery {
+    width: 85%;
+    margin: 0 auto;
+    .col-xs-15 {
+      width: 20%;
+    }
+    img:hover {
+      opacity: 0.6;
+    }
+  }
+  img {
+    margin: 1% 0;
+  }
+  .modal-body img {
+    width: 70%;
+    display: block;
+    margin: 0 auto;
+  }
+  .modal-header h4 {
+    text-align: center;
+  } 
+}
